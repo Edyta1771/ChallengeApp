@@ -41,6 +41,7 @@
             //assert
             Assert.AreNotEqual(user1, user2);
             Assert.AreEqual(user1.Login, user2.Login);
+            Assert.AreEqual("Tomasz", user2.Login);
         }
 
         private User GetUser(string name)
