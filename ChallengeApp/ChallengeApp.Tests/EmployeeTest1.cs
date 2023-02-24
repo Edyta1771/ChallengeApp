@@ -3,19 +3,51 @@ namespace ChallengeApp.Tests
     public class Tests
     {
         [Test]
-        public void WhenEmployeeCollectsScores_ShouldFetCorrectResult()
+        public void EmployeeGradesAverage_Check()
         {
             //arrange
-            var employee1 = new Employee("Alina", "Bukowska", "33");
-            employee1.AddScore(5);
-            employee1.AddScore(7);
-            employee1.AddScore(-7);
+            var employee = new Employee("Alina", "Bukowska");
+            employee.AddGrade(5);
+            employee.AddGrade(7);
+            employee.AddGrade(3);
 
             //act
-            var result = employee1.Result;
+            var statistics = employee.GetStatistics();  
+            
+            //assert
+            Assert.AreEqual(5, statistics.Average);
+        }
+
+        [Test]
+        public void EmployeeGradesMax_Check()
+        {
+            //arrange
+            var employee = new Employee("Alina", "Bukowska");
+            employee.AddGrade(5);
+            employee.AddGrade(7);
+            employee.AddGrade(3);
+
+            //act
+            var statistics = employee.GetStatistics();
+            
+            //assert
+            Assert.AreEqual(7, statistics.Max);
+        }
+
+        [Test]
+        public void EmployeeGradesMin_Check()
+        {
+            //arrange
+            var employee = new Employee("Alina", "Bukowska");
+            employee.AddGrade(5);
+            employee.AddGrade(7);
+            employee.AddGrade(3);
+
+            //act
+            var statistics = employee.GetStatistics();
 
             //assert
-            Assert.AreEqual(5, result);
+            Assert.AreEqual(3, statistics.Min);
         }
     }
 }

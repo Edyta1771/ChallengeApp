@@ -31,22 +31,6 @@
             //assert
             Assert.AreEqual(name1, name2);
         }
-
-        [Test]
-        public void PorównanieTypówObiektowych()
-        {
-            //arrange
-            var user1 = GetUser("Tomasz");
-            var user2 = GetUser("Tomasz");
-            //assert
-            Assert.AreNotEqual(user1, user2);
-            Assert.AreEqual(user1.Login, user2.Login);
-            Assert.AreEqual("Tomasz", user2.Login);
-        }
-
-        private User GetUser(string name)
-        {
-            return new User(name);
-        }
+       
     }
 }
