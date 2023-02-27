@@ -7,15 +7,15 @@ namespace ChallengeApp.Tests
         {
             //arrange
             var employee = new Employee("Alina", "Bukowska");
-            employee.AddGrade(5);
+            employee.AddGrade(4);
             employee.AddGrade(7);
             employee.AddGrade(3);
 
             //act
-            var statistics = employee.GetStatistics();  
-            
+            var statistics = employee.GetStatistics();
+
             //assert
-            Assert.AreEqual(5, statistics.Average);
+            Assert.That(Math.Round(4.666666, 2), Is.EqualTo(Math.Round(statistics.Average, 2)));
         }
 
         [Test]
@@ -29,9 +29,9 @@ namespace ChallengeApp.Tests
 
             //act
             var statistics = employee.GetStatistics();
-            
+
             //assert
-            Assert.AreEqual(7, statistics.Max);
+            Assert.That(statistics.Max, Is.EqualTo(7));
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace ChallengeApp.Tests
             var statistics = employee.GetStatistics();
 
             //assert
-            Assert.AreEqual(3, statistics.Min);
+            Assert.That(statistics.Min, Is.EqualTo(3));
         }
     }
 }
