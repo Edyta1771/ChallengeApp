@@ -39,42 +39,22 @@
 
         public void AddGrade(double grade)
         {
-            if (grade >= 0 && grade <= 100)
-            {
-                float result = (float)grade;  
-                this.grades.Add(result);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value");
-            }
+            float doubleAsFloat = (float)grade;  
+            this.AddGrade(doubleAsFloat);
         }
 
         public void AddGrade(long grade)
         {
-            if (grade >= 0 && grade <= 100)
-            {
-                float result = (float)grade;
-                this.grades.Add(result);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value");
-            }
+            float longAsFloat = (float)grade;
+            this.AddGrade(longAsFloat);
         }
 
         public void AddGrade(int grade)
         {
-            if (grade >= 0 && grade <= 100)
-            {
-                float result = (float)grade;
-                this.grades.Add(result);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value");
-            }
+            float intAsFloat = grade;
+            this.AddGrade(intAsFloat);  
         }
+
         public Statistics GetStatistics() 
         { 
             var statistics = new Statistics();
