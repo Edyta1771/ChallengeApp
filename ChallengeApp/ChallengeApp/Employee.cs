@@ -57,6 +57,31 @@ namespace ChallengeApp
             this.AddGrade(intAsFloat);  
         }
 
+        public void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Wrong letter");   
+                    break;
+            }
+        }
+
         public Statistics GetStatistics() 
         { 
             var statistics = new Statistics();
@@ -71,6 +96,26 @@ namespace ChallengeApp
                 statistics.Average += grade;
             }
             statistics.Average /= this.grades.Count;
+
+            switch (statistics.Average) 
+            {
+                case var a when a >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var a when a >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var a when a >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var a when a >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
+            }
+
             return statistics;
         }
 
