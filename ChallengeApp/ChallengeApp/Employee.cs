@@ -31,6 +31,10 @@
             {
                 this.AddGrade(result);
             }
+            else if (char.TryParse(grade, out char resultLetter))
+            {
+                this.AddGrade(resultLetter);
+            }
             else
             {
                 throw new Exception("String is not float");
