@@ -7,15 +7,35 @@ namespace ChallengeApp.Tests
         {
             //arrange
             var employee = new Employee("Alina", "Bukowska");
-            employee.AddGrade(4);
-            employee.AddGrade(7);
-            employee.AddGrade(3);
+            employee.AddGrade(24);
+            employee.AddGrade(58);
+            employee.AddGrade(63);
+            employee.AddGrade("7");
+            employee.AddGrade(55);
 
             //act
             var statistics = employee.GetStatistics();
 
             //assert
-            Assert.That(Math.Round(4.666666, 2), Is.EqualTo(Math.Round(statistics.Average, 2)));
+            Assert.AreEqual(Math.Round(statistics.Average, 2), (Math.Round(41.4, 2)));
+        }
+
+        [Test]
+        public void EmployeeGradesAverageLetter_Check()
+        {
+            //arrange
+            var employee = new Employee("Alina", "Bukowska");
+            employee.AddGrade(24);
+            employee.AddGrade(58);
+            employee.AddGrade(63);
+            employee.AddGrade("7");
+            employee.AddGrade(55);
+
+            //act
+            var statistics = employee.GetStatistics();
+
+            //assert
+            Assert.AreEqual(statistics.AverageLetter, 'C');
         }
 
         [Test]
@@ -23,15 +43,17 @@ namespace ChallengeApp.Tests
         {
             //arrange
             var employee = new Employee("Alina", "Bukowska");
-            employee.AddGrade(5);
-            employee.AddGrade(7);
-            employee.AddGrade(3);
+            employee.AddGrade(24);
+            employee.AddGrade(58);
+            employee.AddGrade(63);
+            employee.AddGrade("7");
+            employee.AddGrade(55);
 
             //act
             var statistics = employee.GetStatistics();
 
             //assert
-            Assert.That(statistics.Max, Is.EqualTo(7));
+            Assert.AreEqual(statistics.Max, 63);
         }
 
         [Test]
@@ -39,15 +61,17 @@ namespace ChallengeApp.Tests
         {
             //arrange
             var employee = new Employee("Alina", "Bukowska");
-            employee.AddGrade(5);
-            employee.AddGrade(7);
-            employee.AddGrade(3);
+            employee.AddGrade(24);
+            employee.AddGrade(58);
+            employee.AddGrade(63);
+            employee.AddGrade("7");
+            employee.AddGrade(55);
 
             //act
             var statistics = employee.GetStatistics();
 
             //assert
-            Assert.That(statistics.Min, Is.EqualTo(3));
+            Assert.AreEqual(statistics.Min, 7);
         }
     }
 }
