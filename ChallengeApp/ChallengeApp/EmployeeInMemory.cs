@@ -1,31 +1,30 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
+        public EmployeeInMemory(string name, string surname) 
+            : base(name, surname)
         {
-            this.Name = name; 
-            this.Surname = surname;
         }
 
         public string Name { get; private set; }
 
         public string Surname { get; private set; }
 
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
-            if(grade >= 0 && grade <=100)
+            if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
             }
-            else 
+            else
             {
                 throw new Exception("Invalid grade value");
             }
         }
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -41,25 +40,19 @@
             }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
-            float doubleAsFloat = (float)grade;  
+            float doubleAsFloat = (float)grade;
             this.AddGrade(doubleAsFloat);
         }
 
-        public void AddGrade(long grade)
-        {
-            float longAsFloat = (float)grade;
-            this.AddGrade(longAsFloat);
-        }
-
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float intAsFloat = grade;
-            this.AddGrade(intAsFloat);  
+            this.AddGrade(intAsFloat);
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -88,22 +81,22 @@
             }
         }
 
-        public Statistics GetStatistics() 
-        { 
+        public override Statistics GetStatistics()
+        {
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
 
-            foreach(var grade in this.grades) 
-            { 
+            foreach (var grade in this.grades)
+            {
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);
                 statistics.Average += grade;
             }
             statistics.Average /= this.grades.Count;
 
-            switch (statistics.Average) 
+            switch (statistics.Average)
             {
                 case var a when a >= 80:
                     statistics.AverageLetter = 'A';
