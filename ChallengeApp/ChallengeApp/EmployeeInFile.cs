@@ -1,6 +1,6 @@
 ﻿namespace ChallengeApp
 {
-    internal class EmployeeInFile : EmployeeBase
+    public class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
 
@@ -8,10 +8,6 @@
             : base(name, surname)
         { 
         }
-
-        public string Name { get; private set; }
-
-        public string Surname { get; private set; }
 
         public override void AddGrade(float grade)
         {
