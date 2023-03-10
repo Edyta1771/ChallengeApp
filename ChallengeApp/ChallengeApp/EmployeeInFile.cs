@@ -5,12 +5,13 @@
         public override event GradeAddedDelegate GradeAdded;
 
         private const string fileName = "grades.txt";
-
+                       
         public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {
+            File.Delete(fileName);
         }
-
+                
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -108,6 +109,7 @@
         public override Statistics GetStatistics()
         {
             var grades = new List<float>();
+
             if (File.Exists(fileName))
             {
                 using (var reader = File.OpenText(fileName))
@@ -137,6 +139,18 @@
             }
             return statistics;
         }
+        //private void DeleteAndRecreateFile() 
+        //{ 
+        //    File.Delete($"{Name}{fileName}");
+        //    using (var writer = File.AppendText($"{Name}{fileName}")) 
+        //    { 
+        //        foreach (var item in grades) 
+        //        {
+        //            writer.WriteLine(item);
+        //        } 
+        //    }
+        //}
+
 
     }
 }

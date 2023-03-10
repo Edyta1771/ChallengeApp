@@ -6,6 +6,7 @@ Console.WriteLine();
 
 var employee = new EmployeeInFile("Agnieszka", "Falkowska");
 Console.WriteLine($"Please insert grades for the employee: {employee.Name} {employee.Surname}");
+Console.WriteLine();
 Console.WriteLine($"The grade should be in the range 0 - 100 or A - E");
 Console.WriteLine("Press q to get statistics");
 Console.WriteLine();
