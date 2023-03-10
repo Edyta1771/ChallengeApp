@@ -4,18 +4,49 @@ Console.WriteLine("Welcome to the STAT program for employees assessment");
 Console.WriteLine("====================================================");
 Console.WriteLine();
 
-var employee = new EmployeeInFile("Zbyszek", "Lato");
+var employee = new EmployeeInFile("Agnieszka", "Falkowska");
+Console.WriteLine($"Please insert grades for the employee: {employee.Name} {employee.Surname}");
+Console.WriteLine($"The grade should be in the range 0 - 100 or A - E");
+Console.WriteLine("Press q to get statistics");
+Console.WriteLine();
+
 employee.GradeAdded += EmployeeGradeAdded;
 
 void EmployeeGradeAdded(object sender, EventArgs args)
 {
-    Console.WriteLine("Dodano nową ocenę");
+    Console.WriteLine("New grade added");
 }
 
-employee.AddGrade(0.5f);
-employee.AddGrade(25);
-employee.AddGrade(41);
-employee.AddGrade('c');
+while (true)
+{
+    Console.Write("Give next grade for employee: ");
+    var input = Console.ReadLine();
+    if (input == "q")
+    {
+        break;
+    }
+
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception cought: {e.Message}");
+    }
+    Console.WriteLine();
+}
+
+var statistics = employee.GetStatistics();
+
+Console.WriteLine("====================================================");
+Console.WriteLine();
+Console.WriteLine($"Results for the employee: {employee.Name} {employee.Surname}");
+Console.WriteLine($"Number of grades received: {statistics.Count}");
+Console.WriteLine($"Min grade: {statistics.Min}");
+Console.WriteLine($"Max grade: {statistics.Max}");
+Console.WriteLine($"Average in points: {statistics.Average:N2}");
+Console.WriteLine($"Average as letter: {statistics.AverageLetter}");
 
 
 
@@ -53,32 +84,3 @@ employee.AddGrade('c');
 //Console.WriteLine($"Average in letter format:  {statisticsSuper.AverageLetter}");
 //Console.WriteLine();
 
-//var employee = new Employee("Agnieszka", "Falkowska");
-
-//while (true)
-//{
-//    Console.Write("Give next grade for employee: ");
-//    var input = Console.ReadLine();
-//    if (input == "q")
-//    {
-//        break;
-//    }
-
-//    try
-//    {
-//        employee.AddGrade(input);
-//    }
-//    catch (Exception e)
-//    {
-//        Console.WriteLine($"Exception cought: {e.Message}");
-//    }
-//}
-
-//var statistics = employee.GetStatistics();
-
-//Console.WriteLine();
-//Console.WriteLine($"Results for employee:");
-//Console.WriteLine($"Min: {statistics.Min}");
-//Console.WriteLine($"Max: {statistics.Max}");
-//Console.WriteLine($"Average in points: {statistics.Average:N2}");
-//Console.WriteLine($"Average in letter format:  {statistics.AverageLetter}");
