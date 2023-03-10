@@ -5,10 +5,19 @@ Console.WriteLine("====================================================");
 Console.WriteLine();
 
 var employee = new EmployeeInFile("Zbyszek", "Lato");
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
+
 employee.AddGrade(0.5f);
 employee.AddGrade(25);
 employee.AddGrade(41);
 employee.AddGrade('c');
+
+
 
 
 

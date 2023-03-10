@@ -2,6 +2,8 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
+
         private List<float> grades = new List<float>();
 
         public EmployeeInMemory(string name, string surname) 
@@ -14,6 +16,11 @@
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if(GradeAdded != null) 
+                { 
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -74,6 +81,10 @@
                     break;
                 default:
                     throw new Exception("Wrong letter");
+            }
+            if (GradeAdded != null)
+            {
+                GradeAdded(this, new EventArgs());
             }
         }
 
