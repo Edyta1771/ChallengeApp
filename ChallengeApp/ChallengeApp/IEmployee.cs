@@ -17,8 +17,8 @@ namespace ChallengeApp
 
         void AddGrade(string grade);
 
-        Statistics GetStatistics();
-
         event GradeAddedDelegate GradeAdded;
+
+        Statistics GetStatistics();
     }
 }

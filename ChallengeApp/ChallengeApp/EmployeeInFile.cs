@@ -17,13 +17,12 @@
             {
                 using (var writer = File.AppendText(fileName)) 
                 { 
-                    writer.WriteLine(grade);
-
-                    if (GradeAdded != null)
-                    {
-                        GradeAdded(this, new EventArgs());
-                    }
-                }              
+                    writer.WriteLine(grade);                    
+                }
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
